@@ -16,8 +16,8 @@ pipeline {
         stage('Build docker image') {
             steps {
                 sh('docker ps')
-                sh("docker stop \$(docker ps | grep ${params.github-microservice-demo-branches} | awk '{print \$1}') || true")
-                sh('docker run --rm -d -p ${params.PORT}:${params.PORT} --name=${params.github-microservice-demo-branches}:latest')
+                sh("docker stop \$(docker ps | grep ${params.DOCKER_IMAGE} | awk '{print \$1}') || true")
+                sh('docker run --rm -d -p ${params.PORT}:${params.PORT} --name=${params.DOCKER_IMAGE}:latest')
                 sh("docker build  --build-arg PORT='${params.PORT}' -t ${params.DOCKER_IMAGE} . ")
             }
         }
@@ -46,10 +46,5 @@ pipeline {
                 sh('docker stop ${params.DOCKER_IMAGE}')
             }
         }
-        // stage('Pull updates on node XQABDO05') {
-            // steps {
-                // sh "ssh devteam@XQABDO05 && docker pull ${params.DOCKER_IMAGE}"
-            // }
-        // }
     }
 }
