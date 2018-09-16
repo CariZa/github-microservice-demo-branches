@@ -1,4 +1,6 @@
 pipeline {
+
+    agent any
     // agent {
         // Run on any linux container with docker installed
         // label 'linux'
