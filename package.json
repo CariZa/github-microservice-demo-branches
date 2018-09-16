@@ -1,0 +1,28 @@
+{
+  "name": "github-microservice-demo-branches",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CariZa/github-microservice-demo-branches.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/CariZa/github-microservice-demo-branches/issues"
+  },
+  "homepage": "https://github.com/CariZa/github-microservice-demo-branches#readme",
+  "devDependencies": {
+    "nodemon": "^1.18.4"
+  },
+  "dependencies": {
+    "express": "^4.16.3",
+    "request": "^2.88.0",
+    "request-promise": "^4.2.2",
+    "underscore": "^1.9.1"
+  }
+}
