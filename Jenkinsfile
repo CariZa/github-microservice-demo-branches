@@ -33,30 +33,11 @@ pipeline {
         }
         stage('Check docker image can run as container') {
             steps {
-
-
-//                 docker service create --name jenkins \
-// #  --publish 8082:8080 \
-// #  --publish 50000:50000 \
-// #  -e JENKINS_OPTS="--prefix=/jenkins" \
-// #  --reserve-memory 300m \
-// #  --mount "type=volume,source=jenkins_vol,target=/var/jenkins_home" \
-// #  --constraint 'node.labels.jenkins_vol == true' \
-// #  jenkins
-
-                // sh('docker stop ${params.DOCKER_IMAGE} || true')
-                // sh("docker run -d --rm \
-                //         --name ${params.CONTAINER_NAME} \
-                //         --network jenkins_jenkins-stack \
-                //         -p ${params.PORT}:${params.PORT} \
-                //         ${params.DOCKER_IMAGE} ")
                 sh("docker service create \
                         --name ${params.CONTAINER_NAME} \
                         --network jenkins_jenkins-stack \
                         --publish ${params.PORT}:${params.PORT} \
                         ${params.DOCKER_IMAGE} ")
-                
-                sh("sleep 30s")
             }
         }
         stage('Run integration tests on container') {
@@ -65,7 +46,7 @@ pipeline {
 
                 sh("curl ${params.CONTAINER_NAME}:${params.PORT}")
                 sh("docker logs ${params.DOCKER_IMAGE}")
-                sh("docker service rm ${params.DOCKER_IMAGE}")
+                sh("docker service rm ${params.CONTAINER_NAME}")
             }
         }
     }
