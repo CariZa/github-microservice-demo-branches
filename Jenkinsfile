@@ -8,6 +8,7 @@ pipeline {
 
     parameters {
         string(name: 'DOCKER_IMAGE', defaultValue: 'cariza/github-microservice-demo-branches', description: 'Docker repository')
+        string(name: 'PORT', defaultValue: '2995', description: 'Run on port')
     }
 
     environment {
@@ -18,7 +19,7 @@ pipeline {
         stage('Build docker image') {
             steps {
                 sh('docker ps')
-                sh("docker stop \$(docker ps | grep ${params.DOCKER_IMAGE} | awk '{print \$1}') || true")
+                // sh("docker stop \$(docker ps | grep ${params.DOCKER_IMAGE} | awk '{print \$1}') || true")
                 sh('docker run --rm -d -p ${params.PORT}:${params.PORT} --name=${params.DOCKER_IMAGE}:latest')
                 sh("docker build  --build-arg PORT='${params.PORT}' -t ${params.DOCKER_IMAGE} . ")
             }
