@@ -45,9 +45,9 @@ pipeline {
             steps {
                 sh('echo "No integration tests yet. TODO. Just doing curl for now. "')
 
-                sh('curl ${params.DOCKER_IMAGE}:${params.PORT}')
+                sh("curl ${params.CONTAINER_NAME}:${params.PORT}")
                 sh("docker logs ${params.DOCKER_IMAGE}")
-                sh('docker stop ${params.DOCKER_IMAGE}')
+                sh("docker stop ${params.DOCKER_IMAGE}")
             }
         }
     }
