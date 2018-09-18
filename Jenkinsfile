@@ -36,6 +36,7 @@ pipeline {
                 // sh('docker stop ${params.DOCKER_IMAGE} || true')
                 sh("docker run -d --rm \
                         --name ${params.CONTAINER_NAME} \
+                        --network jenkins_jenkins-stack \
                         -p ${params.PORT}:${params.PORT} \
                         ${params.DOCKER_IMAGE} ")
                 sh("sleep 30s")
