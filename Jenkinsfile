@@ -9,6 +9,7 @@ pipeline {
     parameters {
         string(name: 'DOCKER_IMAGE', defaultValue: 'cariza/github-microservice-demo-branches', description: 'Docker repository')
         string(name: 'PORT', defaultValue: '2995', description: 'Run on port')
+        string(name: 'CONTAINER_NAME', defaultValue: 'github-microservice-demo-branches', description: 'The name the container will run as')
     }
 
     environment {
@@ -34,7 +35,7 @@ pipeline {
             steps {
                 // sh('docker stop ${params.DOCKER_IMAGE} || true')
                 sh("docker run -d --rm \
-                        --name ${params.DOCKER_IMAGE} \
+                        --name ${params.CONTAINER_NAME} \
                         -p ${params.PORT}:${params.PORT} \
                         ${params.DOCKER_IMAGE} ")
                 sh("sleep 30s")
