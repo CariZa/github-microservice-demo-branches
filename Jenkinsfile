@@ -26,7 +26,7 @@ pipeline {
         }
         stage('Push docker image') {
             steps {
-                sh("docker login -u cariza -p P@ssw0rd!Nedbank")
+                sh("docker login -u cariza -p P@ssw0rd!")
                 sh("docker push ${params.DOCKER_IMAGE} ")
             }
         }
