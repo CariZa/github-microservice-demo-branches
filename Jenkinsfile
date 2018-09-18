@@ -52,7 +52,7 @@ pipeline {
                 //         ${params.DOCKER_IMAGE} ")
                 sh("docker service create \
                         --name ${params.CONTAINER_NAME} \
-                        --network jenkins-stack \
+                        --network jenkins_jenkins-stack \
                         --publish ${params.PORT}:${params.PORT} \
                         ${params.DOCKER_IMAGE} ")
                 
