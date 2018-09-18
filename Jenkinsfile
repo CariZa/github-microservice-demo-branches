@@ -32,7 +32,7 @@ pipeline {
         }
         stage('Check docker image can run as container') {
             steps {
-                sh('docker stop ${params.DOCKER_IMAGE} || true')
+                // sh('docker stop ${params.DOCKER_IMAGE} || true')
                 sh("docker run -d --rm \
                         --name ${params.DOCKER_IMAGE} \
                         -p ${params.PORT}:${params.PORT} \
