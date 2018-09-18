@@ -20,7 +20,7 @@ pipeline {
             steps {
                 sh('docker ps')
                 // sh("docker stop \$(docker ps | grep ${params.DOCKER_IMAGE} | awk '{print \$1}') || true")
-                sh('docker run --rm -d -p ${params.PORT}:${params.PORT} --name=${params.DOCKER_IMAGE}:latest')
+                // sh('docker run --rm -d -p ${params.PORT}:${params.PORT} --name=${params.DOCKER_IMAGE}:latest')
                 sh("docker build  --build-arg PORT='${params.PORT}' -t ${params.DOCKER_IMAGE} . ")
             }
         }
