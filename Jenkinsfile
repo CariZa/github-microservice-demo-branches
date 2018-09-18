@@ -1,10 +1,10 @@
 pipeline {
 
-    agent any
-    // agent {
+    // agent any
+    agent {
         // Run on any linux container with docker installed
-        // label 'linux'
-    // }
+        label 'docker'
+    }
 
     parameters {
         string(name: 'DOCKER_IMAGE', defaultValue: 'cariza/github-microservice-demo-branches', description: 'Docker repository')
