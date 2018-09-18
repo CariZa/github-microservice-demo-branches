@@ -45,7 +45,7 @@ pipeline {
                 sh('echo "No integration tests yet. TODO. Just doing curl for now. "')
 
                 sh("curl ${params.CONTAINER_NAME}:${params.PORT}")
-                sh("docker logs ${params.DOCKER_IMAGE}")
+                sh("docker logs ${params.CONTAINER_NAME}")
                 sh("docker service rm ${params.CONTAINER_NAME}")
             }
         }
