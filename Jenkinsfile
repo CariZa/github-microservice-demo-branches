@@ -10,7 +10,6 @@ pipeline {
         string(name: 'DOCKER_IMAGE', defaultValue: 'cariza/github-microservice-demo-branches', description: 'Docker repository')
         string(name: 'PORT', defaultValue: '2995', description: 'Run on port')
         string(name: 'CONTAINER_NAME', defaultValue: 'github-microservice-demo-branches', description: 'The name the container will run as')
-        string(name: 'PASSWORD', defaultValue: '', description: 'The docker hub password')
     }
 
     environment {
@@ -28,7 +27,9 @@ pipeline {
         }
         stage('Push docker image') {
             steps {
-                sh("docker login -u cariza -p ${params.PASSWORD}")
+                withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: 'e3a9c429-0c9a-48c0-8206-9ad918993119', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD']]) { 
+                    sh("docker login -u ${USERNAME} -p ${PASSWORD}}")
+                }
                 sh("docker push ${params.DOCKER_IMAGE} ")
             }
         }
