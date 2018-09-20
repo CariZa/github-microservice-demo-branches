@@ -50,10 +50,10 @@ pipeline {
                 // sh("docker service rm ${params.CONTAINER_NAME}")
             }
         }
-        stage('Testing a new stage') {
-            steps {
-                sh('echo "Hello :-) " ');
-            }
-        }
+        // stage('Testing a new stage') {
+        //     steps {
+        //         sh('echo "Hello :-) " ');
+        //     }
+        // }
     }
 }
