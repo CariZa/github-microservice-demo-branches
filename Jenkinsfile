@@ -35,7 +35,7 @@ pipeline {
         }
         stage('Check docker image can run as container') {
             steps {
-                sh("docker service create \
+                sh("docker service update \
                         --name ${params.CONTAINER_NAME} \
                         --network jenkins_jenkins-stack \
                         --publish ${params.PORT}:${params.PORT} \
