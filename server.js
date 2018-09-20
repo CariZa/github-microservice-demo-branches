@@ -13,7 +13,7 @@ app.listen(port, () => {
 });
 
 app.get('/', (req, res) => {
-    let data = {"data": "Welcome to Devopsday Cape Town :)"}
+    let data = {"data": "Thank you"}
     res.send(data);
 });
 
