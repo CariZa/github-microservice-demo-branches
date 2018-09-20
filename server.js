@@ -17,6 +17,20 @@ app.get('/', (req, res) => {
     res.send(data);
 });
 
+app.get('/branches/', (req, res) => {
+    let account = "docker";
+    let repo = "docker.github.io";
+    let url = "https://api.github.com/repos/"+account+"/"+repo+"/branches";
+
+    console.log(url);
+    getData(url).then((data) => {
+        res.send(data);
+    })
+        .catch(err => {
+            res.send(err);
+        });  
+});
+
 app.get('/branches/:account/:repo', (req, res) => {
     let account = req.params.account;
     let repo = req.params.repo;

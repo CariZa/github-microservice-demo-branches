@@ -56,5 +56,10 @@ pipeline {
         //         sh('echo "Hello :-) " ');
         //     }
         // }
+        // stage('Add a clask hook here and send feedback to slack') {
+        //     steps {
+        //         sh('echo "Sending to slack..." ');
+        //     }
+        // }
     }
 }
