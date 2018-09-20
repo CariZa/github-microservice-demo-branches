@@ -28,7 +28,8 @@ pipeline {
         stage('Push docker image') {
             steps {
                 // withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: 'e3a9c429-0c9a-48c0-8206-9ad918993119', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD']]) { 
-                withCredentials([string(credentialsId: 'e3a9c429-0c9a-48c0-8206-9ad918993119', variable: 'PASSWORD')]) {
+                // withCredentials([string(credentialsId: 'e3a9c429-0c9a-48c0-8206-9ad918993119', variable: 'PASSWORD')]) {
+                withCredentials([usernamePassword(credentialsId: 'e3a9c429-0c9a-48c0-8206-9ad918993119', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
                     sh("docker login -u cariza -p ${PASSWORD}}")
                     sh("docker push ${params.DOCKER_IMAGE} ")
                 }
