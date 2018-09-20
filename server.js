@@ -13,8 +13,22 @@ app.listen(port, () => {
 });
 
 app.get('/', (req, res) => {
-    let data = {"data": "Welcome"}
+    let data = {"data": "Welcome to Devopsday Cape Town :)"}
     res.send(data);
+});
+
+app.get('/branches/', (req, res) => {
+    let account = "docker";
+    let repo = "docker.github.io";
+    let url = "https://api.github.com/repos/"+account+"/"+repo+"/branches";
+
+    console.log(url);
+    getData(url).then((data) => {
+        res.send(data);
+    })
+        .catch(err => {
+            res.send(err);
+        });  
 });
 
 app.get('/branches/', (req, res) => {
